@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from scapy.all import *
+from scapy.all import *  # version 2.4.0
 import argparse
 import sys
 
