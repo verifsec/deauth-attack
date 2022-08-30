@@ -1,6 +1,6 @@
-# Deauth/Disas Attack
+# Deauth/Disas Attack (Python3)
 
-2019/11/12(verifsec@gmail.com)
+2022/08/30(verifsec@gmail.com)
 
 ## Installation
 
@@ -14,14 +14,14 @@
 
 ```
 # deauth-attack -h
-Deauth/Disas Attack 1.02a by <verifsec@gmail.com>
+Deauth/Disas Attack 1.03 by <verifsec@gmail.com>
 
 usage: deauth-attack [-h] -i IFACE -b BSSID [-t TARGET] -m MODE
 
 optional arguments:
   -h, --help            show this help message and exit
   -i IFACE, --iface IFACE
-                        802.11 iface(monitor)
+                        802.11 iface
   -b BSSID, --bssid BSSID
                         APUT MAC Address
   -t TARGET, --target TARGET
